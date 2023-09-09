@@ -28,6 +28,7 @@ func TestMetricsBuilderConfig(t *testing.T) {
 				Metrics: MetricsConfig{
 					DefaultMetric:            MetricConfig{Enabled: true},
 					DefaultMetricToBeRemoved: MetricConfig{Enabled: true},
+					OptionalHistogramMetric:  MetricConfig{Enabled: true},
 					OptionalMetric:           MetricConfig{Enabled: true},
 				},
 				ResourceAttributes: ResourceAttributesConfig{
@@ -45,6 +46,7 @@ func TestMetricsBuilderConfig(t *testing.T) {
 				Metrics: MetricsConfig{
 					DefaultMetric:            MetricConfig{Enabled: false},
 					DefaultMetricToBeRemoved: MetricConfig{Enabled: false},
+					OptionalHistogramMetric:  MetricConfig{Enabled: false},
 					OptionalMetric:           MetricConfig{Enabled: false},
 				},
 				ResourceAttributes: ResourceAttributesConfig{

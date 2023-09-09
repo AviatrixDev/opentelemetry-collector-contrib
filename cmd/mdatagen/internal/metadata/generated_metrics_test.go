@@ -58,6 +58,10 @@ func TestMetricsBuilder(t *testing.T) {
 				expectedWarnings++
 			}
 			if test.configSet == testSetAll || test.configSet == testSetNone {
+				assert.Equal(t, "[WARNING] `optional.histogram.metric` should not be configured: This metric is deprecated and will be removed soon.", observedLogs.All()[expectedWarnings].Message)
+				expectedWarnings++
+			}
+			if test.configSet == testSetAll || test.configSet == testSetNone {
 				assert.Equal(t, "[WARNING] `optional.metric` should not be configured: This metric is deprecated and will be removed soon.", observedLogs.All()[expectedWarnings].Message)
 				expectedWarnings++
 			}
@@ -73,6 +77,9 @@ func TestMetricsBuilder(t *testing.T) {
 			defaultMetricsCount++
 			allMetricsCount++
 			mb.RecordDefaultMetricToBeRemovedDataPoint(ts, 1)
+
+			allMetricsCount++
+			mb.RecordOptionalHistogramMetricDataPoint(ts, 1, 1.0, "string_attr-val", true)
 
 			allMetricsCount++
 			mb.RecordOptionalMetricDataPoint(ts, 1, "string_attr-val", true)
@@ -148,6 +155,25 @@ func TestMetricsBuilder(t *testing.T) {
 					assert.Equal(t, ts, dp.Timestamp())
 					assert.Equal(t, pmetric.NumberDataPointValueTypeDouble, dp.ValueType())
 					assert.Equal(t, float64(1), dp.DoubleValue())
+				case "optional.histogram.metric":
+					assert.False(t, validatedMetrics["optional.histogram.metric"], "Found a duplicate in the metrics slice: optional.histogram.metric")
+					validatedMetrics["optional.histogram.metric"] = true
+					assert.Equal(t, pmetric.MetricTypeHistogram, ms.At(i).Type())
+					assert.Equal(t, 1, ms.At(i).Histogram().DataPoints().Len())
+					assert.Equal(t, "[DEPRECATED] Histogram metric disabled by default.", ms.At(i).Description())
+					assert.Equal(t, "1", ms.At(i).Unit())
+					assert.Equal(t, pmetric.AggregationTemporalityCumulative, ms.At(i).Histogram().AggregationTemporality())
+					dp := ms.At(i).Histogram().DataPoints().At(0)
+					assert.Equal(t, start, dp.StartTimestamp())
+					assert.Equal(t, ts, dp.Timestamp())
+					assert.Equal(t, uint64(1), dp.Count())
+					assert.Equal(t, float64(1.0), dp.Sum())
+					attrVal, ok := dp.Attributes().Get("string_attr")
+					assert.True(t, ok)
+					assert.EqualValues(t, "string_attr-val", attrVal.Str())
+					attrVal, ok = dp.Attributes().Get("boolean_attr")
+					assert.True(t, ok)
+					assert.EqualValues(t, true, attrVal.Bool())
 				case "optional.metric":
 					assert.False(t, validatedMetrics["optional.metric"], "Found a duplicate in the metrics slice: optional.metric")
 					validatedMetrics["optional.metric"] = true
