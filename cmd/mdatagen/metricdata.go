@@ -187,7 +187,7 @@ type histogram struct {
 	MetricInputType        `mapstructure:",squash"`
 }
 
-// Unmarshal is a custom unmarshaler for sum. Needed mostly to avoid MetricValueType.Unmarshal inheritance.
+// Unmarshal is a custom unmarshaler for histogram. Needed mostly to avoid MetricValueType.Unmarshal inheritance.
 func (d *histogram) Unmarshal(parser *confmap.Conf) error {
 	if !parser.IsSet("aggregation_temporality") {
 		return errors.New("missing required field: `aggregation_temporality`")
