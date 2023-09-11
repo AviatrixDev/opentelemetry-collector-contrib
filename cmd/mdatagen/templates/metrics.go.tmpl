@@ -76,7 +76,7 @@ func (m *metric{{ $name.Render }}) init() {
 }
 
 func (m *metric{{ $name.Render }}) recordDataPoint(start pcommon.Timestamp, ts pcommon.Timestamp
-	{{- if eq $metric.Data.Type "Histogram" }}, count uint64, sum float64
+	{{- if eq $metric.Data.Type "Histogram" }}, count uint64, sum float64, bucketCounts []uint64, explicitBounds []float64
 	{{- else }}, val {{ $metric.Data.MetricValueType.BasicType }}
 	{{- end }}
 	{{- range $metric.Attributes -}}, {{ .RenderUnexported }}AttributeValue {{ (attributeInfo .).Type.Primitive }}{{ end }}) {
@@ -89,6 +89,12 @@ func (m *metric{{ $name.Render }}) recordDataPoint(start pcommon.Timestamp, ts p
 	{{- if eq $metric.Data.Type "Histogram" }}
 	dp.SetCount(count)
 	dp.SetSum(sum)
+	if len(bucketCounts) > 0 {
+		dp.BucketCounts().FromRaw(bucketCounts)
+	}
+	if len(explicitBounds) > 0 {
+		dp.ExplicitBounds().FromRaw(explicitBounds)
+	}
 	{{- else }}
 	dp.Set{{ $metric.Data.MetricValueType }}Value(val)
 	{{- end }}
@@ -274,7 +280,7 @@ func (mb *MetricsBuilder) Emit(rmo ...ResourceMetricsOption) pmetric.Metrics {
 // Record{{ $name.Render }}DataPoint adds a data point to {{ $name }} metric.
 func (mb *MetricsBuilder) Record{{ $name.Render }}DataPoint(ts pcommon.Timestamp
 	{{- if $metric.Data.HasMetricInputType }}, inputVal {{ $metric.Data.MetricInputType.String }}
-	{{- else if eq $metric.Data.Type "Histogram" }}, count uint64, sum float64
+	{{- else if eq $metric.Data.Type "Histogram" }}, count uint64, sum float64, bucketCounts []uint64, explicitBounds []float64
 	{{- else }}, val {{ $metric.Data.MetricValueType.BasicType }}
 	{{- end }}
 	{{- range $metric.Attributes -}}
@@ -292,7 +298,7 @@ func (mb *MetricsBuilder) Record{{ $name.Render }}DataPoint(ts pcommon.Timestamp
 	}
 	{{- end }}
 	mb.metric{{ $name.Render }}.recordDataPoint(mb.startTime, ts
-		{{- if eq $metric.Data.Type "Histogram" }}, count, sum
+		{{- if eq $metric.Data.Type "Histogram" }}, count, sum, bucketCounts, explicitBounds
 		{{- else }}, val
 		{{- end }}
 		{{- range $metric.Attributes -}}

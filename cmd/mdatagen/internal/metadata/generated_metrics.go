@@ -166,7 +166,7 @@ func (m *metricOptionalHistogramMetric) init() {
 	m.data.Histogram().DataPoints().EnsureCapacity(m.capacity)
 }
 
-func (m *metricOptionalHistogramMetric) recordDataPoint(start pcommon.Timestamp, ts pcommon.Timestamp, count uint64, sum float64, stringAttrAttributeValue string, booleanAttrAttributeValue bool) {
+func (m *metricOptionalHistogramMetric) recordDataPoint(start pcommon.Timestamp, ts pcommon.Timestamp, count uint64, sum float64, bucketCounts []uint64, explicitBounds []float64, stringAttrAttributeValue string, booleanAttrAttributeValue bool) {
 	if !m.config.Enabled {
 		return
 	}
@@ -175,6 +175,12 @@ func (m *metricOptionalHistogramMetric) recordDataPoint(start pcommon.Timestamp,
 	dp.SetTimestamp(ts)
 	dp.SetCount(count)
 	dp.SetSum(sum)
+	if len(bucketCounts) > 0 {
+		dp.BucketCounts().FromRaw(bucketCounts)
+	}
+	if len(explicitBounds) > 0 {
+		dp.ExplicitBounds().FromRaw(explicitBounds)
+	}
 	dp.Attributes().PutStr("string_attr", stringAttrAttributeValue)
 	dp.Attributes().PutBool("boolean_attr", booleanAttrAttributeValue)
 }
@@ -399,8 +405,8 @@ func (mb *MetricsBuilder) RecordDefaultMetricToBeRemovedDataPoint(ts pcommon.Tim
 }
 
 // RecordOptionalHistogramMetricDataPoint adds a data point to optional.histogram.metric metric.
-func (mb *MetricsBuilder) RecordOptionalHistogramMetricDataPoint(ts pcommon.Timestamp, count uint64, sum float64, stringAttrAttributeValue string, booleanAttrAttributeValue bool) {
-	mb.metricOptionalHistogramMetric.recordDataPoint(mb.startTime, ts, count, sum, stringAttrAttributeValue, booleanAttrAttributeValue)
+func (mb *MetricsBuilder) RecordOptionalHistogramMetricDataPoint(ts pcommon.Timestamp, count uint64, sum float64, bucketCounts []uint64, explicitBounds []float64, stringAttrAttributeValue string, booleanAttrAttributeValue bool) {
+	mb.metricOptionalHistogramMetric.recordDataPoint(mb.startTime, ts, count, sum, bucketCounts, explicitBounds, stringAttrAttributeValue, booleanAttrAttributeValue)
 }
 
 // RecordOptionalMetricDataPoint adds a data point to optional.metric metric.

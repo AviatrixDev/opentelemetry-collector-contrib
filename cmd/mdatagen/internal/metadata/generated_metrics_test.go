@@ -79,7 +79,7 @@ func TestMetricsBuilder(t *testing.T) {
 			mb.RecordDefaultMetricToBeRemovedDataPoint(ts, 1)
 
 			allMetricsCount++
-			mb.RecordOptionalHistogramMetricDataPoint(ts, 1, 1.0, "string_attr-val", true)
+			mb.RecordOptionalHistogramMetricDataPoint(ts, 6, 10.0, []uint64{1, 2, 3}, []float64{4.0, 5.0}, "string_attr-val", true)
 
 			allMetricsCount++
 			mb.RecordOptionalMetricDataPoint(ts, 1, "string_attr-val", true)
@@ -166,8 +166,16 @@ func TestMetricsBuilder(t *testing.T) {
 					dp := ms.At(i).Histogram().DataPoints().At(0)
 					assert.Equal(t, start, dp.StartTimestamp())
 					assert.Equal(t, ts, dp.Timestamp())
-					assert.Equal(t, uint64(1), dp.Count())
-					assert.Equal(t, float64(1.0), dp.Sum())
+					var count uint64
+					for _, bucketCount := range dp.BucketCounts().AsRaw() {
+						count = count + bucketCount
+					}
+					assert.Equal(t, count, dp.Count())
+					assert.Equal(t, uint64(6), dp.Count())
+					assert.Equal(t, float64(10.0), dp.Sum())
+					assert.Equal(t, []uint64{1, 2, 3}, dp.BucketCounts().AsRaw())
+					assert.Equal(t, []float64{4.0, 5.0}, dp.ExplicitBounds().AsRaw())
+					assert.Equal(t, dp.BucketCounts().Len(), dp.ExplicitBounds().Len()+1)
 					attrVal, ok := dp.Attributes().Get("string_attr")
 					assert.True(t, ok)
 					assert.EqualValues(t, "string_attr-val", attrVal.Str())
