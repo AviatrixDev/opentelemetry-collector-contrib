@@ -180,6 +180,8 @@ github.com/DataDog/datadog-agent/pkg/proto v0.48.0-beta.1 h1:Htxj/RE55AeDZ+OE6+x
 github.com/DataDog/datadog-agent/pkg/proto v0.48.0-beta.1/go.mod h1:O3WwGRPZxs4BpB2ccUvIIPprhscWBRpudJT6mC+7sr8=
 github.com/DataDog/datadog-agent/pkg/remoteconfig/state v0.48.0-beta.1 h1:We9Y6+kwCnSOQilk2koeADjbZgMHFDl6iHBaobU5nAw=
 github.com/DataDog/datadog-agent/pkg/remoteconfig/state v0.48.0-beta.1/go.mod h1:5Q39ZOIOwZMnFyRadp+5gH1bFdjmb+Pgxe+j5XOwaTg=
+github.com/DataDog/datadog-agent/pkg/trace v0.47.1 h1:JU0bn3DW0TZLdFpguzomsyjoYm+bPOIxgr9E8hAiXZI=
+github.com/DataDog/datadog-agent/pkg/trace v0.47.1/go.mod h1:aJ+hS1sSbkP0x/R0ikDqF3dPQh60rd4acBjzM7PBNDk=
 github.com/DataDog/datadog-agent/pkg/trace v0.48.0-beta.1 h1:usLCrmPm2wuNedbcuArxN37E/e7UaCJ66i1tuEq7E/M=
 github.com/DataDog/datadog-agent/pkg/trace v0.48.0-beta.1/go.mod h1:kxBOu4ZSem1E0JdhxjeI2jAQ7nxeRxuhjU4r9LKnRkU=
 github.com/DataDog/datadog-agent/pkg/util/cgroups v0.48.0-beta.1 h1:9iyw6jSwJwsFe8TooU8mqMhMfFiW6N/05OnNMg91kBY=
@@ -527,6 +529,7 @@ github.com/cockroachdb/apd v1.1.0 h1:3LFP3629v+1aKXU5Q37mxmRxX/pIu1nijXydLShEq5I
 github.com/cockroachdb/apd v1.1.0/go.mod h1:8Sl8LxpKi29FqWXR16WEFZRNSz3SoPzUzeMeY4+DwBQ=
 github.com/cockroachdb/datadriven v0.0.0-20190809214429-80d97fb3cbaa/go.mod h1:zn76sxSg3SzpJ0PPJaLDCu+Bu0Lg3sKTORVIj19EIF8=
 github.com/codahale/hdrhistogram v0.0.0-20161010025455-3a0bb77429bd/go.mod h1:sE/e/2PUdi/liOCUjSTXgM1o87ZssimdTWN964YiIeI=
+github.com/codahale/rfc6979 v0.0.0-20141003034818-6a90f24967eb/go.mod h1:ZjrT6AXHbDs86ZSdt/osfBi5qfexBrKUdONk989Wnk4=
 github.com/containerd/cgroups v1.1.0 h1:v8rEWFl6EoqHB+swVNjVoCJE8o3jX7e8nqBGPLaDFBM=
 github.com/containerd/cgroups v1.1.0/go.mod h1:6ppBcbh/NOOUU+dMKrykgaBnK9lCIBxHqJDGwsa1mIw=
 github.com/containerd/console v1.0.3 h1:lIr7SlA5PxZyMV30bDW0MGbiOPXwc63yRuCP0ARubLw=
@@ -687,6 +690,7 @@ github.com/felixge/httpsnoop v1.0.1/go.mod h1:m8KPJKqk1gH5J9DgRY2ASl2lWCfGKXixSw
 github.com/felixge/httpsnoop v1.0.2/go.mod h1:m8KPJKqk1gH5J9DgRY2ASl2lWCfGKXixSwevea8zH2U=
 github.com/felixge/httpsnoop v1.0.3 h1:s/nj+GCswXYzN5v2DpNMuMQYe+0DDwt5WVCU6CWBdXk=
 github.com/felixge/httpsnoop v1.0.3/go.mod h1:m8KPJKqk1gH5J9DgRY2ASl2lWCfGKXixSwevea8zH2U=
+github.com/flynn/go-docopt v0.0.0-20140912013429-f6dd2ebbb31e/go.mod h1:HyVoz1Mz5Co8TFO8EupIdlcpwShBmY98dkT2xeHkvEI=
 github.com/fogleman/gg v1.2.1-0.20190220221249-0403632d5b90/go.mod h1:R/bRT+9gY/C5z7JzPU0zXsXHKM4/ayA+zqcVNZzPa1k=
 github.com/form3tech-oss/jwt-go v3.2.2+incompatible/go.mod h1:pbq4aXjuKjdthFRnoDwaVPLA+WlJuPGy+QneDUgJi2k=
 github.com/form3tech-oss/jwt-go v3.2.5+incompatible h1:/l4kBbb4/vGSsdtB5nUe8L7B9mImVMaBPw9L/0TBHU8=
@@ -1166,6 +1170,7 @@ github.com/hashicorp/go-immutable-radix v1.3.1 h1:DKHmCUm2hRBK510BaiZlwvpD40f8bJ
 github.com/hashicorp/go-immutable-radix v1.3.1/go.mod h1:0y9vanUI8NX6FsYoO3zeMjhV/C5i9g4Q3DwcSNZ4P60=
 github.com/hashicorp/go-msgpack v0.5.3/go.mod h1:ahLV/dePpqEmjfWmKiqvPkv/twdG7iPBM1vqhUKIvfM=
 github.com/hashicorp/go-msgpack v0.5.5 h1:i9R9JSrqIz0QVLz3sz+i3YJdT7TTSLcfLLzJi9aZTuI=
+github.com/hashicorp/go-msgpack v0.5.5/go.mod h1:ahLV/dePpqEmjfWmKiqvPkv/twdG7iPBM1vqhUKIvfM=
 github.com/hashicorp/go-multierror v1.0.0/go.mod h1:dHtQlpGsu+cZNNAkkCN/P3hoUDHhCYQXV3UM06sGGrk=
 github.com/hashicorp/go-multierror v1.1.0/go.mod h1:spPvp8C1qA32ftKqdAHm4hHTbPw+vmowP0z+KUhOZdA=
 github.com/hashicorp/go-multierror v1.1.1 h1:H5DkEtf6CXdFp0N0Em5UCwQpXMWke8IA0+lD48awMYo=
@@ -1704,6 +1709,8 @@ github.com/open-telemetry/opentelemetry-collector-contrib/exporter/clickhouseexp
 github.com/open-telemetry/opentelemetry-collector-contrib/exporter/clickhouseexporter v0.85.0/go.mod h1:nyN55siBCQAKH+5TDCoqKWljWu6GTPswXnqdNFphGdY=
 github.com/open-telemetry/opentelemetry-collector-contrib/exporter/coralogixexporter v0.85.0 h1:dyxVcNe1zrVNhrI0t8/Mq6c7jHIP3XllibrYliBwSTE=
 github.com/open-telemetry/opentelemetry-collector-contrib/exporter/coralogixexporter v0.85.0/go.mod h1:rYVSlT9/3vzolhKxN8P1OMOZxsF1UU6hC1TJQOqX86Q=
+github.com/open-telemetry/opentelemetry-collector-contrib/exporter/datadogexporter v0.81.0 h1:Lv6UAkPm0nxZbf9kAOwJ5t9EcD8XGFM1VnD/rZEPzRs=
+github.com/open-telemetry/opentelemetry-collector-contrib/exporter/datadogexporter v0.81.0/go.mod h1:3+W1VFBY/p1pU1mUlKbGVQUhWwb2380atkyDOOVzWhs=
 github.com/open-telemetry/opentelemetry-collector-contrib/exporter/datadogexporter v0.85.0 h1:0Zb1/sCCaH0yW6VTHcqy+6mgr9+xOnnzRmxfQ1rQVEY=
 github.com/open-telemetry/opentelemetry-collector-contrib/exporter/datadogexporter v0.85.0/go.mod h1:PEbIi4P+SzoI3nKfpH02At6ahI01EYdJ31HbrZsjucA=
 github.com/open-telemetry/opentelemetry-collector-contrib/exporter/datasetexporter v0.85.0 h1:bcM4Y2luCK7hK1LPMRD0WOjwcC04WynB98MgaQfBnlo=
@@ -1880,6 +1887,8 @@ github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributespr
 github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor v0.85.0/go.mod h1:HKFzmbw5Zru0tKiSrmCBpqFL7GTp4+cLx080jCCTyH4=
 github.com/open-telemetry/opentelemetry-collector-contrib/processor/cumulativetodeltaprocessor v0.85.0 h1:ULnBXpOXj4cVY7xjXO2u/iF1YlWPx3FR99eYH5b4yQM=
 github.com/open-telemetry/opentelemetry-collector-contrib/processor/cumulativetodeltaprocessor v0.85.0/go.mod h1:gQsxx1r+lBTQmGEb49GrRv+4ENDYBZj/D2gJFnGDK7k=
+github.com/open-telemetry/opentelemetry-collector-contrib/processor/datadogprocessor v0.81.0 h1:GobJ8wri8GQNNf67a9WHSJ1Ho1OZsp2/pWC9faGn424=
+github.com/open-telemetry/opentelemetry-collector-contrib/processor/datadogprocessor v0.81.0/go.mod h1:g0ltDQpxB/NIaKzqlXufnnCUGPlc5i6VMBkTan5JXD4=
 github.com/open-telemetry/opentelemetry-collector-contrib/processor/datadogprocessor v0.85.0 h1:aDLqrDGES0JT4rZBJgUh/F5ZO1un9EXmx2Vdyv6yTio=
 github.com/open-telemetry/opentelemetry-collector-contrib/processor/datadogprocessor v0.85.0/go.mod h1:BPeIJhxnG53GZZ9cLYdikLwJDQTTLZhJmXW74DOmnqg=
 github.com/open-telemetry/opentelemetry-collector-contrib/processor/deltatorateprocessor v0.85.0 h1:n60NZ+PiRBDQHmhiS0hbI1GJpOoVdjU04IMHK4QHQqc=
@@ -2418,6 +2427,7 @@ github.com/spf13/viper v1.12.0/go.mod h1:b6COn30jlNxbm/V2IqWiNWkJ+vZNiMNksliPCiu
 github.com/spf13/viper v1.16.0 h1:rGGH0XDZhdUOryiDWjmIvUSWpbNqisK8Wk0Vyefw8hc=
 github.com/spf13/viper v1.16.0/go.mod h1:yg78JgCJcbrQOvV9YLXgkLaZqUidkY9K+Dd1FofRzQg=
 github.com/ssgreg/nlreturn/v2 v2.1.0/go.mod h1:E/iiPB78hV7Szg2YfRgyIrk1AD6JVMTRkkxBiELzh2I=
+github.com/stoewer/go-strcase v1.2.0/go.mod h1:IBiWB2sKIp3wVVQ3Y035++gc+knqhUQag1KpM8ahLw8=
 github.com/streadway/amqp v0.0.0-20190404075320-75d898a42a94/go.mod h1:AZpEONHx3DKn8O/DFsRAY58/XVQiIPMTMB1SddzLXVw=
 github.com/streadway/amqp v0.0.0-20190827072141-edfb9018d271/go.mod h1:AZpEONHx3DKn8O/DFsRAY58/XVQiIPMTMB1SddzLXVw=
 github.com/streadway/amqp v1.0.0/go.mod h1:AZpEONHx3DKn8O/DFsRAY58/XVQiIPMTMB1SddzLXVw=
@@ -3598,6 +3608,7 @@ k8s.io/client-go v0.28.2/go.mod h1:sMkApowspLuc7omj1FOSUxSoqjr+d5Q0Yc0LOFnYFJY=
 k8s.io/code-generator v0.21.1/go.mod h1:hUlps5+9QaTrKx+jiM4rmq7YmH8wPOIko64uZCHDh6Q=
 k8s.io/gengo v0.0.0-20200413195148-3a45101e95ac/go.mod h1:ezvh/TsK7cY6rbqRK0oQQ8IAqLxYwwyPxAX1Pzy0ii0=
 k8s.io/gengo v0.0.0-20201214224949-b6c5ce23f027/go.mod h1:FiNAH4ZV3gBg2Kwh89tzAEV2be7d5xI0vBa/VySYy3E=
+k8s.io/gengo v0.0.0-20210813121822-485abfe95c7c/go.mod h1:FiNAH4ZV3gBg2Kwh89tzAEV2be7d5xI0vBa/VySYy3E=
 k8s.io/klog v1.0.0 h1:Pt+yjF5aB1xDSVbau4VsWe+dQNzA0qv1LlXdC2dF6Q8=
 k8s.io/klog v1.0.0/go.mod h1:4Bi6QPql/J/LkTDqv7R/cd3hPo4k2DG6Ptcz060Ez5I=
 k8s.io/klog/v2 v2.0.0/go.mod h1:PBfzABfn139FHAV07az/IF9Wp1bkk3vpT2XSJ76fSDE=

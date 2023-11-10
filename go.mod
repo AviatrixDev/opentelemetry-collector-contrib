@@ -16,7 +16,7 @@ require (
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/cassandraexporter v0.85.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/clickhouseexporter v0.85.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/coralogixexporter v0.85.0
-	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/datadogexporter v0.85.0
+	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/datadogexporter v0.81.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/datasetexporter v0.85.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/dynatraceexporter v0.85.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/elasticsearchexporter v0.85.0
@@ -66,7 +66,7 @@ require (
 	github.com/open-telemetry/opentelemetry-collector-contrib/extension/storage v0.85.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor v0.85.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/processor/cumulativetodeltaprocessor v0.85.0
-	github.com/open-telemetry/opentelemetry-collector-contrib/processor/datadogprocessor v0.85.0
+	github.com/open-telemetry/opentelemetry-collector-contrib/processor/datadogprocessor v0.81.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/processor/deltatorateprocessor v0.85.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor v0.85.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/processor/groupbyattrsprocessor v0.85.0
@@ -239,7 +239,7 @@ require (
 	github.com/DataDog/datadog-agent/pkg/obfuscate v0.48.0-beta.1 // indirect
 	github.com/DataDog/datadog-agent/pkg/proto v0.48.0-beta.1 // indirect
 	github.com/DataDog/datadog-agent/pkg/remoteconfig/state v0.48.0-beta.1 // indirect
-	github.com/DataDog/datadog-agent/pkg/trace v0.48.0-beta.1 // indirect
+	github.com/DataDog/datadog-agent/pkg/trace v0.47.1 // indirect
 	github.com/DataDog/datadog-agent/pkg/util/cgroups v0.48.0-beta.1 // indirect
 	github.com/DataDog/datadog-agent/pkg/util/log v0.48.0-beta.1 // indirect
 	github.com/DataDog/datadog-agent/pkg/util/pointer v0.48.0-beta.1 // indirect
@@ -506,7 +506,6 @@ require (
 	github.com/open-telemetry/opentelemetry-collector-contrib/internal/aws/xray v0.85.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/internal/common v0.85.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/internal/coreinternal v0.85.0 // indirect
-	github.com/open-telemetry/opentelemetry-collector-contrib/internal/datadog v0.85.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/internal/docker v0.85.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/internal/filter v0.85.0 // indirect
 	github.com/open-telemetry/opentelemetry-collector-contrib/internal/k8sconfig v0.85.0 // indirect
@@ -698,18 +697,3 @@ require (
 	sigs.k8s.io/yaml v1.3.0 // indirect
 	skywalking.apache.org/repo/goapi v0.0.0-20220121092418-9c455d0dda3f // indirect
 )
-
-// Replace references to modules that are in this repository with their relateive paths
-// so that we always build with current (latest) version of the source code.
-retract (
-	v0.76.2
-	v0.76.1
-	v0.65.0
-	v0.37.0 // Contains dependencies on v0.36.0 components, which should have been updated to v0.37.0.
-)
-
-// see https://github.com/distribution/distribution/issues/3590
-exclude github.com/docker/distribution v2.8.0+incompatible
-
-// see https://github.com/DataDog/agent-payload/issues/218
-exclude github.com/DataDog/agent-payload/v5 v5.0.59
